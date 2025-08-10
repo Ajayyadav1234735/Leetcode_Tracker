@@ -6,11 +6,8 @@ services:
     env: node
     region: oregon
     buildCommand: |
-      npm install --include=dev
-      if ! npx --no vite --version > /dev/null 2>&1; then
-        echo "⚠️ Vite not found, installing..."
-        npm install vite esbuild --save-dev
-      fi
+      export NODE_ENV=development
+      npm install
       npm run build
       node deploy-simple.cjs
     startCommand: npm start
