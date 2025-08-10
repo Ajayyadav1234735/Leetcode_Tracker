@@ -1,16 +1,12 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
-// This config is safe for both local dev and Render
 export default defineConfig({
-  plugins: [
-    react(),
-  ],
+  plugins: [react()],
+  root: resolve(__dirname, 'client'), // frontend root
   build: {
-    outDir: "dist/client",
+    outDir: resolve(__dirname, 'dist'), // build output
     emptyOutDir: true,
-  },
-  server: {
-    port: 3000,
   },
 });
